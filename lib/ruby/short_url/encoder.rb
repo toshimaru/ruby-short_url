@@ -21,6 +21,8 @@ module Ruby
         decode(debase(n))
       end
 
+      private
+
       def encode(n)
         (n & ~@mask) | _encode(n & @mask)
       end
@@ -47,8 +49,6 @@ module Ruby
         end
         result
       end
-
-      private
 
       def _encode(n)
         result = 0
