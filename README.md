@@ -1,8 +1,10 @@
 # Ruby::ShortUrl
 
-Ruby version of python-short_url.
+Ruby implementation for generating Tiny URL. Ruby implementation of [python-short_url](https://github.com/Alir3z4/python-short_url)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ruby/short_url`. To experiment with that code, run `bin/console` for an interactive prompt.
+> A bit-shuffling approach is used to avoid generating consecutive, predictable URLs. However, the algorithm is deterministic and will guarantee that no collisions will occur.
+
+More detail is [here](https://github.com/Alir3z4/python-short_url#short-url-generator).
 
 ## Installation
 
@@ -22,7 +24,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```rb
+# shorten id
+Ruby::ShortUrl::Encoder.new.encode_url(123456) # => "00crI"
+
+# decode encoded
+Ruby::ShortUrl::Encoder.new.decode_url("00crI") # => 123456
+```
+
+TODO: Customize alphabet/block_size/min_size.
 
 ## Development
 

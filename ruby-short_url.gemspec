@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["toshi"]
   spec.email         = ["me@toshimaru.net"]
 
-  spec.summary       = %q{Ruby implementation for generating Tiny URL. Ruby implementation of python-short_url}
+  spec.summary       = %q{Ruby implementation for generating Tiny URL. Ruby implementation of python-short_url.}
   spec.homepage      = "https://github.com/toshimaru/ruby-short_url"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
