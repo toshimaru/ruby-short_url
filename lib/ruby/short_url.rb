@@ -1,7 +1,7 @@
 require "ruby/short_url/version"
+require "ruby/short_url/encoder"
 
 module Ruby
   module ShortUrl
-    # Your code goes here...
   end
 end
