@@ -1,5 +1,7 @@
 # Ruby::ShortUrl
 
+[![Gem Version](https://badge.fury.io/rb/ruby-short_url.svg)](http://badge.fury.io/rb/ruby-short_url)
+
 Ruby implementation for generating Tiny URL. Ruby implementation of [python-short_url](https://github.com/Alir3z4/python-short_url)
 
 > A bit-shuffling approach is used to avoid generating consecutive, predictable URLs. However, the algorithm is deterministic and will guarantee that no collisions will occur.
