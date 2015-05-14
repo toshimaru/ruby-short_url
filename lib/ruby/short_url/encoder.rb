@@ -49,17 +49,17 @@ module Ruby
 
       def _encode(n)
         @mapping.reverse.each_with_index.inject(0) do |result, (b, i)|
-          _calc_result(n, b, i)
+          _calc_result(result, n, b, i)
         end
       end
 
       def _decode(n)
         @mapping.reverse.each_with_index.inject(0) do |result, (b, i)|
-          _calc_result(n, i, b)
+          _calc_result(result, n, i, b)
         end
       end
 
-      def _calc_result(n, x, y)
+      def _calc_result(result, n, x, y)
         return result |= (1 << x) if n & (1 << y) != 0
         result
       end
