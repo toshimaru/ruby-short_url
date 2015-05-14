@@ -4,7 +4,7 @@ SimpleCov.start "test_frameworks" do
 end
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'ruby/short_url'
+require 'ruby-short_url'
 
 require "minitest/reporters"
 Minitest::Reporters.use!
