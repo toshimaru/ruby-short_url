@@ -34,4 +34,16 @@ describe Ruby::ShortUrl do
       end
     end
   end
+
+  describe "default result" do
+    it "1" do
+      encoded = encoder.encode_url(1)
+      assert_equal encoded, '0ZCG8'
+    end
+
+    it "10" do
+      encoded = encoder.encode_url(10)
+      assert_equal encoded, '0Lzua'
+    end
+  end
 end
