@@ -1,5 +1,6 @@
 # Ruby::ShortUrl
 
+[![Build Status](https://travis-ci.org/toshimaru/ruby-short_url.svg?branch=master)](https://travis-ci.org/toshimaru/ruby-short_url)
 [![Gem Version](https://badge.fury.io/rb/ruby-short_url.svg)](http://badge.fury.io/rb/ruby-short_url)
 [![Dependency Status](https://gemnasium.com/toshimaru/ruby-short_url.svg)](https://gemnasium.com/toshimaru/ruby-short_url)
 [![Test Coverage](https://codeclimate.com/github/toshimaru/ruby-short_url/badges/coverage.svg)](https://codeclimate.com/github/toshimaru/ruby-short_url/coverage)
