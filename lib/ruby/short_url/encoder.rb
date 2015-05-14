@@ -7,6 +7,7 @@ module Ruby
       MIN_LENGTH = 5
 
       def initialize(alphabet: DEFAULT_ALPHABET, block_size: DEFAULT_BLOCK_SIZE)
+        raise ArgumentError.new 'Alphabet has to contain at least 2 characters.' if alphabet.length < 2
         @alphabet = alphabet
         @block_size = block_size
         @mask = (1 << block_size) - 1
@@ -31,7 +32,7 @@ module Ruby
         (n & ~@mask) | _decode(n & @mask)
       end
 
-      def enbase(x, min_length=MIN_LENGTH)
+      def enbase(x, min_length)
         result = _enbase(x)
         padding_length = min_length - result.length
         padding_length = 0 if padding_length < 0
