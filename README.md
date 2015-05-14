@@ -1,6 +1,8 @@
 # Ruby::ShortUrl
 
 [![Gem Version](https://badge.fury.io/rb/ruby-short_url.svg)](http://badge.fury.io/rb/ruby-short_url)
+[![Dependency Status](https://gemnasium.com/toshimaru/ruby-short_url.svg)](https://gemnasium.com/toshimaru/ruby-short_url)
+[![Code Climate](https://codeclimate.com/github/toshimaru/ruby-short_url/badges/gpa.svg)](https://codeclimate.com/github/toshimaru/ruby-short_url)
 
 Ruby implementation for generating Tiny URL. Ruby implementation of [python-short_url](https://github.com/Alir3z4/python-short_url)
 
