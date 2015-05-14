@@ -54,9 +54,7 @@ module Ruby
       def _encode(n)
         result = 0
         @mapping.reverse.each_with_index do |b, i|
-          if (n & (1 << i)) != 0
-            result |= (1 << b)
-          end
+          result |= (1 << b) if (n & (1 << i)) != 0
         end
         result
       end
@@ -64,9 +62,7 @@ module Ruby
       def _decode(n)
         result = 0
         @mapping.reverse.each_with_index do |b, i|
-          if n & (1 << b) != 0
-            result |= (1 << i)
-          end
+          result |= (1 << i) if n & (1 << b) != 0
         end
         result
       end
