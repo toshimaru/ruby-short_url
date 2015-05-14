@@ -43,23 +43,26 @@ module Ruby
       def debase(x)
         n = @alphabet.length
         x.split('').reverse.each_with_index.inject(0) do |result, (c, i)|
-          result += @alphabet.index(c) * (n ** i) unless @alphabet.index(c).nil?
-          result
+          result += @alphabet.index(c) * (n ** i)
         end
       end
 
       def _encode(n)
-        @mapping.reverse.each_with_index.inject(0) do |result, (b, i)|
+        reverse_mapping_each_with_index.inject(0) do |result, (b, i)|
           result |= (1 << b) if (n & (1 << i)) != 0
           result
         end
       end
 
       def _decode(n)
-        @mapping.reverse.each_with_index.inject(0) do |result, (b, i)|
+        reverse_mapping_each_with_index.inject(0) do |result, (b, i)|
           result |= (1 << i) if n & (1 << b) != 0
           result
         end
+      end
+
+      def reverse_mapping_each_with_index
+        @mapping.reverse.each_with_index
       end
 
       def _enbase(x)
