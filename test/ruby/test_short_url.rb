@@ -45,5 +45,10 @@ describe Ruby::ShortUrl do
       encoded = encoder.encode_url(10)
       assert_equal encoded, '0Lzua'
     end
+
+    it "100" do
+      encoded = encoder.encode_url(100)
+      assert_equal encoded, '0ARrE'
+    end
   end
 end
