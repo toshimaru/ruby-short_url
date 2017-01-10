@@ -15,8 +15,13 @@ describe Ruby::ShortUrl do
     assert_respond_to encoder, :decode_url
   end
 
-  it "throws exception" do
+  it "throws exception alphabet too short" do
     assert_raises(ArgumentError) { Ruby::ShortUrl::Encoder.new(alphabet: "a") }
+  end
+
+  it "throws exception block_size is zero or negative" do
+    assert_raises(ArgumentError) { Ruby::ShortUrl::Encoder.new(block_size: 0) }
+    assert_raises(ArgumentError) { Ruby::ShortUrl::Encoder.new(block_size: -1) }
   end
 
   it "doesn't throw exception" do
