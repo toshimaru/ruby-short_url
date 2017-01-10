@@ -45,7 +45,7 @@ module Ruby
       def debase(x)
         n = @alphabet.length
         x.split('').reverse.each_with_index.inject(0) do |result, (c, i)|
-          result + @alphabet.index(c) * (n**i)
+          result += @alphabet.index(c) * (n**i)
         end
       end
 
