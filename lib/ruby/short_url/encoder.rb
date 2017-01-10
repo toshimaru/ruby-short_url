@@ -8,7 +8,7 @@ module Ruby
 
       def initialize(alphabet: DEFAULT_ALPHABET, block_size: DEFAULT_BLOCK_SIZE)
         raise ArgumentError.new 'alphabet must contain at least 2 characters.' if alphabet.length < 2
-        raise ArgumentError.new 'block_size must be greater than 0.' if block_size.zero? || block_size.negative?
+        raise ArgumentError.new 'block_size must be greater than 0.' unless block_size > 0
 
         @alphabet = alphabet
         @block_size = block_size
@@ -45,7 +45,7 @@ module Ruby
       def debase(x)
         n = @alphabet.length
         x.split('').reverse.each_with_index.inject(0) do |result, (c, i)|
-          result + @alphabet.index(c) * (n**i)
+          result += @alphabet.index(c) * (n ** i)
         end
       end
 
@@ -62,7 +62,7 @@ module Ruby
       end
 
       def _calc_result(result, n, x, y)
-        return result |= (1 << x) if (n & (1 << y)).positive?
+        return result |= (1 << x) if n & (1 << y) != 0
         result
       end
 
