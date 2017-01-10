@@ -14,7 +14,7 @@ More detail is [here](https://github.com/Alir3z4/python-short_url#short-url-gene
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's `Gemfile`:
 
 ```ruby
 gem 'ruby-short_url'
@@ -38,7 +38,27 @@ Ruby::ShortUrl::Encoder.new.encode_url(123456) # => "00crI"
 Ruby::ShortUrl::Encoder.new.decode_url("00crI") # => 123456
 ```
 
-TODO: Customize alphabet/block_size/min_size.
+### Create your own short URL
+
+```rb
+class CustomEncoder < Ruby::ShortUrl::Encoder
+  class << self
+    def encode(id)
+      custom_encoder.encode_url(id)
+    end
+
+    def decode(value)
+      custom_encoder.decode_url(value)
+    end
+
+    private
+
+    def custom_encoder
+      new(alphabet: "0123abc", block_size: 2)
+    end
+  end
+end
+```
 
 ## Development
 
