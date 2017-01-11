@@ -2,10 +2,7 @@ require 'minitest_helper'
 
 describe Ruby::ShortUrl do
   let(:encoder) { Ruby::ShortUrl::Encoder.new }
-
-  it "has a version number" do
-    refute_nil ::Ruby::ShortUrl::VERSION
-  end
+  let(:custom_encoder) { Ruby::ShortUrl::Encoder.new(alphabet: "abcdef123456", block_size: 10) }
 
   it 'responds to methods#encode_url' do
     assert_respond_to encoder, :encode_url
@@ -49,9 +46,17 @@ describe Ruby::ShortUrl do
         assert_equal decoded, i
       end
     end
+
+    it "has same value with custom encoder" do
+      values.each do |i|
+        encoded = custom_encoder.encode_url(i)
+        decoded = custom_encoder.decode_url(encoded)
+        assert_equal decoded, i
+      end
+    end
   end
 
-  describe "default result" do
+  describe "check encoded/decoded result" do
     describe "1" do
       let(:val) { 1 }
       let(:expected_result) { '0ZCG8' }
