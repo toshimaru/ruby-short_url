@@ -42,8 +42,9 @@ Ruby::ShortUrl::Encoder.new.decode_url("00crI") # => 123456
 
 ```rb
 class CustomEncoder < Ruby::ShortUrl::Encoder
-  def initialize(alphabet: "0123abc", block_size: 5)
-    super
+  def initialize
+    # Set your own custom alphabet and block_size
+    super(alphabet: "0123abc", block_size: 5)
   end
 end
 
