@@ -7,7 +7,9 @@ module Ruby
       MIN_LENGTH = 5
 
       def initialize(alphabet: DEFAULT_ALPHABET, block_size: DEFAULT_BLOCK_SIZE)
-        raise ArgumentError.new 'Alphabet has to contain at least 2 characters.' if alphabet.length < 2
+        raise ArgumentError.new 'alphabet must contain at least 2 characters.' if alphabet.length < 2
+        raise ArgumentError.new 'block_size must be greater than 0.' unless block_size > 0
+
         @alphabet = alphabet
         @block_size = block_size
         @mask = (1 << block_size) - 1
@@ -43,7 +45,7 @@ module Ruby
       def debase(x)
         n = @alphabet.length
         x.split('').reverse.each_with_index.inject(0) do |result, (c, i)|
-          result += @alphabet.index(c) * (n ** i)
+          result + @alphabet.index(c) * (n ** i)
         end
       end
 
