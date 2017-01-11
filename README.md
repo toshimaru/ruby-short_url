@@ -42,22 +42,27 @@ Ruby::ShortUrl::Encoder.new.decode_url("00crI") # => 123456
 
 ```rb
 class CustomEncoder < Ruby::ShortUrl::Encoder
-  class << self
-    def encode(id)
-      custom_encoder.encode_url(id)
-    end
-
-    def decode(value)
-      custom_encoder.decode_url(value)
-    end
-
-    private
-
-    def custom_encoder
-      new(alphabet: "0123abc", block_size: 2)
-    end
+  def initialize(alphabet: "0123abc", block_size: 5)
+    super
   end
 end
+
+# > custom_encoder = CustomEncoder.new
+# => #<CustomEncoder:0x007faf3babc830 @alphabet="0123abc", @block_size=5, @mask=31, @mapping=[0, 1, 2, 3, 4]>
+#
+# > custom_encoder.encode_url(1)
+# => "00022"
+# > custom_encoder.encode_url(2)
+# => "00011"
+# > custom_encoder.encode_url(3)
+# => "00033"
+#
+# > custom_encoder.decode_url("00022")
+# => 1
+# > custom_encoder.decode_url("00011")
+# => 2
+# > custom_encoder.decode_url("00033")
+# => 3
 ```
 
 ## Development
