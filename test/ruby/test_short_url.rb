@@ -52,19 +52,49 @@ describe Ruby::ShortUrl do
   end
 
   describe "default result" do
-    it "1" do
-      encoded = encoder.encode_url(1)
-      assert_equal encoded, '0ZCG8'
+    describe "1" do
+      let(:val) { 1 }
+      let(:expected_result) { '0ZCG8' }
+
+      it "encodes value" do
+        encoded_result = encoder.encode_url(val)
+        assert_equal encoded_result, expected_result
+      end
+
+      it "decodes result" do
+        decoded_val = encoder.decode_url(expected_result)
+        assert_equal decoded_val, val
+      end
     end
 
-    it "10" do
-      encoded = encoder.encode_url(10)
-      assert_equal encoded, '0Lzua'
+    describe "10" do
+      let(:val) { 10 }
+      let(:expected_result) { '0Lzua' }
+
+      it "encodes value" do
+        encoded_result = encoder.encode_url(val)
+        assert_equal encoded_result, expected_result
+      end
+
+      it "decodes result" do
+        decoded_val = encoder.decode_url(expected_result)
+        assert_equal decoded_val, val
+      end
     end
 
-    it "100" do
-      encoded = encoder.encode_url(100)
-      assert_equal encoded, '0ARrE'
+    describe "100" do
+      let(:val) { 100 }
+      let(:expected_result) { '0ARrE' }
+
+      it "encodes value" do
+        encoded_result = encoder.encode_url(val)
+        assert_equal encoded_result, expected_result
+      end
+
+      it "decodes result" do
+        decoded_val = encoder.decode_url(expected_result)
+        assert_equal decoded_val, val
+      end
     end
   end
 end
