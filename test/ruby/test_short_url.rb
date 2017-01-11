@@ -15,6 +15,21 @@ describe Ruby::ShortUrl do
     assert_respond_to encoder, :decode_url
   end
 
+  it "can set alphabet parameter" do
+    encoder = Ruby::ShortUrl::Encoder.new(alphabet: "ab")
+    assert_instance_of Ruby::ShortUrl::Encoder, encoder
+  end
+
+  it "can set block_size parameter" do
+    encoder = Ruby::ShortUrl::Encoder.new(block_size: 100)
+    assert_instance_of Ruby::ShortUrl::Encoder, encoder
+  end
+
+  it "can set alphabet and block_size parameter" do
+    encoder = Ruby::ShortUrl::Encoder.new(alphabet: "0123456789", block_size: 1)
+    assert_instance_of Ruby::ShortUrl::Encoder, encoder
+  end
+
   it "throws exception alphabet too short" do
     assert_raises(ArgumentError) { Ruby::ShortUrl::Encoder.new(alphabet: "a") }
   end
@@ -22,10 +37,6 @@ describe Ruby::ShortUrl do
   it "throws exception block_size is zero or negative" do
     assert_raises(ArgumentError) { Ruby::ShortUrl::Encoder.new(block_size: 0) }
     assert_raises(ArgumentError) { Ruby::ShortUrl::Encoder.new(block_size: -1) }
-  end
-
-  it "doesn't throw exception" do
-    assert_instance_of Ruby::ShortUrl::Encoder, Ruby::ShortUrl::Encoder.new(alphabet: "ab")
   end
 
   describe "original value and decoded value are same" do
