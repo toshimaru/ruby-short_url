@@ -1,5 +1,5 @@
 module Ruby
   module ShortUrl
-    VERSION = "0.3.0"
+    VERSION = '1.0.0'.freeze
   end
 end
