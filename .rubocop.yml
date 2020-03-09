@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   TargetRubyVersion: 2.3
 Style/HashTransformKeys:
@@ -8,3 +10,7 @@ Layout/LineLength:
   Enabled: false
 Metrics/BlockLength:
   Enabled: false
+Naming/FileName:
+  Enabled: false
+Style/NumericPredicate:
+  EnforcedStyle: comparison
