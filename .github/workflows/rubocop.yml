@@ -1,0 +1,20 @@
+name: RuboCop
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: rubocop
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6
+    - run: bundle install
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    - run: bundle exec rubocop
