@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'minitest_helper'
 
 describe Ruby::ShortUrl do
@@ -37,10 +39,10 @@ describe Ruby::ShortUrl do
   end
 
   describe 'original value and decoded value are same' do
-    let(:values) { [1, 12, 123, 12345, 1234567890] }
+    let(:values) { [1, 12, 123, 12_345, 1_234_567_890] }
 
-    it "has same value" do
-      values.each do |i|
+    it 'has same value' do
+      each_value do |i|
         encoded = encoder.encode_url(i)
         decoded = encoder.decode_url(encoded)
         assert_equal decoded, i
@@ -48,7 +50,7 @@ describe Ruby::ShortUrl do
     end
 
     it 'has same value with custom encoder' do
-      values.each do |i|
+      each_value do |i|
         encoded = custom_encoder.encode_url(i)
         decoded = custom_encoder.decode_url(encoded)
         assert_equal decoded, i
