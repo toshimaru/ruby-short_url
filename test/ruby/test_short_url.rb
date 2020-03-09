@@ -42,7 +42,7 @@ describe Ruby::ShortUrl do
     let(:values) { [1, 12, 123, 12_345, 1_234_567_890] }
 
     it 'has same value' do
-      each_value do |i|
+      values.each do |i|
         encoded = encoder.encode_url(i)
         decoded = encoder.decode_url(encoded)
         assert_equal decoded, i
@@ -50,7 +50,7 @@ describe Ruby::ShortUrl do
     end
 
     it 'has same value with custom encoder' do
-      each_value do |i|
+      values.each do |i|
         encoded = custom_encoder.encode_url(i)
         decoded = custom_encoder.decode_url(encoded)
         assert_equal decoded, i
