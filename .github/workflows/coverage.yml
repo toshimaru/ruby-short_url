@@ -1,0 +1,18 @@
+name: Coverage
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: codeclimate report
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6
+    - run: bundle install
+    - uses: paambaati/codeclimate-action@v2.5.4
+      env:
+        CC_TEST_REPORTER_ID: 357da37cbdcc472b4b33ba5f6e8a6fcc14ebcb41bb951b5133c547818ad6fbb3
+      with:
+        coverageCommand: bundle exec rake
