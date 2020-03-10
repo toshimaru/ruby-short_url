@@ -11,6 +11,10 @@
 Ruby implementation for generating Tiny URL. The implementation is based on [python-short_url](https://github.com/Alir3z4/python-short_url).
 
 > A bit-shuffling approach is used to avoid generating consecutive, predictable URLs. However, the algorithm is deterministic and will guarantee that no collisions will occur.
+>
+> The URL alphabet is fully customizable and may contain any number of characters.
+
+> The intended use is that incrementing, consecutive integers will be used as keys to generate the short URLs. For example, when creating a new URL, the unique integer ID assigned by a database could be used to generate the URL by using this module. Or a simple counter may be used. As long as the same integer is not used twice, the same short URL will not be generated twice.
 
 More detail is [here](https://github.com/Alir3z4/python-short_url#short-url-generator).
 
@@ -40,7 +44,7 @@ Ruby::ShortUrl::Encoder.new.encode_url(123456) # => "00crI"
 Ruby::ShortUrl::Encoder.new.decode_url("00crI") # => 123456
 ```
 
-### Create your own short URL
+### Create your own URL Shortner
 
 ```rb
 class CustomEncoder < Ruby::ShortUrl::Encoder
@@ -61,6 +65,8 @@ end
 # => "00011"
 # > custom_encoder.encode_url(3)
 # => "00033"
+# > custom_encoder.encode_url(4)
+# => "0000a"
 #
 # > custom_encoder.decode_url("00022")
 # => 1
@@ -68,6 +74,8 @@ end
 # => 2
 # > custom_encoder.decode_url("00033")
 # => 3
+# > custom_encoder.decode_url("0000a")
+# => 4
 ```
 
 ## Development
