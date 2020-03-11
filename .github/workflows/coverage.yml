@@ -3,7 +3,7 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: codeclimate report
+    name: CodeClimate report
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby

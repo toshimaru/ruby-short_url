@@ -4,7 +4,6 @@ require 'minitest_helper'
 
 describe Ruby::ShortUrl do
   let(:encoder) { Ruby::ShortUrl::Encoder.new }
-  let(:custom_encoder) { Ruby::ShortUrl::Encoder.new(alphabet: 'abcdef123456', block_size: 10) }
 
   it 'responds to methods#encode_url' do
     assert_respond_to encoder, :encode_url
@@ -38,6 +37,11 @@ describe Ruby::ShortUrl do
     assert_raises(ArgumentError) { Ruby::ShortUrl::Encoder.new(block_size: -1) }
   end
 
+  it 'throws NoMethodError type is wrong' do
+    assert_raises(NoMethodError) { Ruby::ShortUrl::Encoder.new.encode_url('1') }
+    assert_raises(NoMethodError) { Ruby::ShortUrl::Encoder.new.decode_url(1) }
+  end
+
   describe 'original value and decoded value are same' do
     let(:values) { [1, 12, 123, 12_345, 1_234_567_890] }
 
@@ -50,11 +54,27 @@ describe Ruby::ShortUrl do
     end
 
     it 'has same value with custom encoder' do
+      custom_encoder = Ruby::ShortUrl::Encoder.new(alphabet: 'abcdef123456', block_size: 10)
+
       values.each do |i|
         encoded = custom_encoder.encode_url(i)
         decoded = custom_encoder.decode_url(encoded)
         assert_equal decoded, i
       end
+    end
+  end
+
+  describe 'check result with/without min_length' do
+    let(:result_without_min_length) { 'bcacbaabcaaaabc' }
+    let(:result_with_min_length) { 'aaaaabcacbaabcaaaabc' }
+
+    it 'has same value with custom encoder' do
+      custom_encoder = Ruby::ShortUrl::Encoder.new(alphabet: 'abc')
+
+      assert_equal custom_encoder.encode_url(1), result_without_min_length
+      assert_equal custom_encoder.encode_url(1, min_length: 20), result_with_min_length
+      assert_equal custom_encoder.decode_url(result_without_min_length), 1
+      assert_equal custom_encoder.decode_url(result_with_min_length), 1
     end
   end
 
