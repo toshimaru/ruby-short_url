@@ -46,8 +46,8 @@ module Ruby
 
       def debase(str)
         len = @alphabet.length
-        str.split('').reverse.each_with_index.sum do |c, i|
-          @alphabet.index(c) * (len**i)
+        str.split('').reverse.each_with_index.sum do |char, idx|
+          @alphabet.index(char) * (len**idx)
         end
       end
 
