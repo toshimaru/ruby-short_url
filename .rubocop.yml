@@ -1,5 +1,7 @@
 AllCops:
   TargetRubyVersion: 2.4
+Style/HashEachMethods:
+  Enabled: false
 Style/HashTransformKeys:
   Enabled: true
 Style/HashTransformValues:
