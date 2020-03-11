@@ -14,7 +14,7 @@ module Ruby
 
         @alphabet = alphabet
         @mask = (1 << block_size) - 1
-        @mapping = (0..block_size - 1).to_a.reverse!
+        @mapping = (0...block_size).to_a.reverse!
       end
 
       def encode_url(int, min_length: MIN_LENGTH)
