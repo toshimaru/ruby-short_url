@@ -18,48 +18,48 @@ module Ruby
         @mapping = (0..block_size - 1).to_a
       end
 
-      def encode_url(n, min_length: MIN_LENGTH)
-        enbase(encode(n), min_length)
+      def encode_url(int, min_length: MIN_LENGTH)
+        enbase(encode(int), min_length)
       end
 
-      def decode_url(n)
-        decode(debase(n))
+      def decode_url(str)
+        decode(debase(str))
       end
 
       private
 
-      def encode(n)
-        (n & ~@mask) | _encode(n & @mask)
+      def encode(int)
+        (int & ~@mask) | _encode(int & @mask)
       end
 
-      def decode(n)
-        (n & ~@mask) | _decode(n & @mask)
+      def decode(int)
+        (int & ~@mask) | _decode(int & @mask)
       end
 
-      def enbase(x, min_length)
-        result = _enbase(x)
+      def enbase(int, min_length)
+        result = _enbase(int)
         padding_length = min_length - result.length
         padding_length = 0 if padding_length < 0
         padding = @alphabet[0] * padding_length
         padding.to_s + result.to_s
       end
 
-      def debase(x)
+      def debase(str)
         n = @alphabet.length
-        x.split('').reverse.each_with_index.inject(0) do |result, (c, i)|
+        str.split('').reverse.each_with_index.inject(0) do |result, (c, i)|
           result + @alphabet.index(c) * (n**i)
         end
       end
 
-      def _encode(n)
+      def _encode(int)
         @mapping.reverse.each_with_index.inject(0) do |result, (b, i)|
-          _calc_result(result, n, b, i)
+          _calc_result(result, int, b, i)
         end
       end
 
-      def _decode(n)
+      def _decode(int)
         @mapping.reverse.each_with_index.inject(0) do |result, (b, i)|
-          _calc_result(result, n, i, b)
+          _calc_result(result, int, i, b)
         end
       end
 
