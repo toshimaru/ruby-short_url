@@ -45,9 +45,9 @@ module Ruby
       end
 
       def debase(str)
-        n = @alphabet.length
-        str.split('').reverse.each_with_index.inject(0) do |result, (c, i)|
-          result + @alphabet.index(c) * (n**i)
+        len = @alphabet.length
+        str.split('').reverse.each_with_index.sum do |c, i|
+          @alphabet.index(c) * (len**i)
         end
       end
 
@@ -70,10 +70,10 @@ module Ruby
       end
 
       def _enbase(int)
-        n = @alphabet.length
-        return @alphabet[int] if int < n
+        len = @alphabet.length
+        return @alphabet[int] if int < len
 
-        _enbase(int / n) + @alphabet[int % n]
+        _enbase(int / len) + @alphabet[int % len]
       end
     end
   end
