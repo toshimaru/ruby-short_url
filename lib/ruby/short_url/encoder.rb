@@ -15,7 +15,7 @@ module Ruby
         @alphabet = alphabet
         @block_size = block_size
         @mask = (1 << block_size) - 1
-        @mapping = (0..block_size - 1).to_a
+        @mapping = (0..block_size - 1).to_a.reverse!
       end
 
       def encode_url(int, min_length: MIN_LENGTH)
@@ -52,13 +52,13 @@ module Ruby
       end
 
       def _encode(int)
-        @mapping.reverse.each_with_index.inject(0) do |result, (val, idx)|
+        @mapping.each_with_index.inject(0) do |result, (val, idx)|
           _calc_result(result, int, val, idx)
         end
       end
 
       def _decode(int)
-        @mapping.reverse.each_with_index.inject(0) do |result, (val, idx)|
+        @mapping.each_with_index.inject(0) do |result, (val, idx)|
           _calc_result(result, int, idx, val)
         end
       end
