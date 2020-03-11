@@ -52,28 +52,28 @@ module Ruby
       end
 
       def _encode(int)
-        @mapping.reverse.each_with_index.inject(0) do |result, (b, i)|
-          _calc_result(result, int, b, i)
+        @mapping.reverse.each_with_index.inject(0) do |result, (val, idx)|
+          _calc_result(result, int, val, idx)
         end
       end
 
       def _decode(int)
-        @mapping.reverse.each_with_index.inject(0) do |result, (b, i)|
-          _calc_result(result, int, i, b)
+        @mapping.reverse.each_with_index.inject(0) do |result, (val, idx)|
+          _calc_result(result, int, idx, val)
         end
       end
 
-      def _calc_result(result, n, x, y)
-        return result |= (1 << x) if n & (1 << y) != 0
+      def _calc_result(result, int, int1, int2)
+        return result |= (1 << int1) if int & (1 << int2) != 0
 
         result
       end
 
-      def _enbase(x)
+      def _enbase(int)
         n = @alphabet.length
-        return @alphabet[x] if x < n
+        return @alphabet[int] if int < n
 
-        _enbase(x / n) + @alphabet[x % n]
+        _enbase(int / n) + @alphabet[int % n]
       end
     end
   end
