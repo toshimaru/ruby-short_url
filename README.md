@@ -1,8 +1,8 @@
 # Ruby::ShortUrl
 
-[![Build Status](https://travis-ci.org/toshimaru/ruby-short_url.svg?branch=master)](https://travis-ci.org/toshimaru/ruby-short_url)
-![RuboCop](https://github.com/toshimaru/ruby-short_url/workflows/RuboCop/badge.svg)
 [![Gem Version](https://badge.fury.io/rb/ruby-short_url.svg)](http://badge.fury.io/rb/ruby-short_url)
+![Test](https://github.com/toshimaru/ruby-short_url/workflows/Test/badge.svg)
+![RuboCop](https://github.com/toshimaru/ruby-short_url/workflows/RuboCop/badge.svg)
 [![Test Coverage](https://codeclimate.com/github/toshimaru/ruby-short_url/badges/coverage.svg)](https://codeclimate.com/github/toshimaru/ruby-short_url/coverage)
 [![Code Climate](https://codeclimate.com/github/toshimaru/ruby-short_url/badges/gpa.svg)](https://codeclimate.com/github/toshimaru/ruby-short_url)
 
