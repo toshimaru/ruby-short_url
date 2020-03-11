@@ -13,7 +13,6 @@ module Ruby
         raise ArgumentError, 'block_size must be greater than 0.' unless block_size > 0
 
         @alphabet = alphabet
-        @block_size = block_size
         @mask = (1 << block_size) - 1
         @mapping = (0..block_size - 1).to_a.reverse!
       end
