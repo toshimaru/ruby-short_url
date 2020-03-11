@@ -37,6 +37,11 @@ describe Ruby::ShortUrl do
     assert_raises(ArgumentError) { Ruby::ShortUrl::Encoder.new(block_size: -1) }
   end
 
+  it 'throws NoMethodError type is wrong' do
+    assert_raises(NoMethodError) { Ruby::ShortUrl::Encoder.new.encode_url('1') }
+    assert_raises(NoMethodError) { Ruby::ShortUrl::Encoder.new.decode_url(1) }
+  end
+
   describe 'original value and decoded value are same' do
     let(:values) { [1, 12, 123, 12_345, 1_234_567_890] }
 
